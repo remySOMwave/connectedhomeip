@@ -1,11 +1,4 @@
 image:
   file: .gitpod.Dockerfile
 
-tasks:
-  - init: |
-      sudo apt-get update
-      pip3 install --user -r scripts/setup/requirements.txt
-      ./scripts/bootstrap.sh
-    command: |
-      source scripts/activate.sh
-      ./scripts/build/build_examples.py --target android-chip-tool
+
