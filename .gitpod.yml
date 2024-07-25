@@ -1,2 +1,19 @@
 image:
   file: .gitpod.Dockerfile
+
+tasks:
+  - init: |
+      # Initialiser les sous-modules Git
+      git submodule update --init --recursive
+
+      # Installer les dépendances Python
+      pip3 install --user -r scripts/setup/requirements.txt
+
+      # Bootstrap le projet Matter
+      ./scripts/bootstrap.sh
+    command: |
+      # Activer l'environnement Matter
+      source scripts/activate.sh
+
+      # Construire le projet ChipTool pour Android
+      ./scripts/build/build_examples.py --target android-chip-tool
