@@ -1,0 +1,11 @@
+image: gitpod/workspace-full:latest
+
+tasks:
+  - init: |
+      sudo apt-get update
+      sudo apt-get install -y openjdk-11-jdk python3-pip git wget unzip
+      pip3 install --user -r scripts/setup/requirements.txt
+      ./scripts/bootstrap.sh
+    command: |
+      source scripts/activate.sh
+      ./scripts/build/build_examples.py --target android-chip-tool
